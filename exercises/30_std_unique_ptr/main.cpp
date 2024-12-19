@@ -1,4 +1,5 @@
 ﻿#include "../exercise.h"
+#include <cstring>
 #include <memory>
 #include <string>
 #include <vector>
@@ -52,13 +53,19 @@ int main(int argc, char **argv) {
     drop(drop(reset(drop(reset(reset(nullptr))))));
     problems[2] = std::move(RECORDS);
 
-    // ---- 不要修改以上代码 ----
-
+    //// ---- 不要修改以上代码 ----
+    // for(int i = 0 ;  i < 3 ; ++i){
+    //     std::cout << "Problem " << i << ":\n";
+    //     for(auto &record : problems[i]){
+    //         std::cout << record << " ";
+    //     }
+    //     std::cout << "\n";
+    // }
     std::vector<const char *> answers[]{
         {"fd"},
         // TODO: 分析 problems[1] 中资源的生命周期，将记录填入 `std::vector`
-        {"", "", "", "", "", "", "", ""},
-        {"", "", "", "", "", "", "", ""},
+        {"ffr" , "d"},
+        {"r" , "d", "d"}
     };
 
     // ---- 不要修改以下代码 ----

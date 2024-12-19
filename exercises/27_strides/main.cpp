@@ -17,7 +17,13 @@ std::vector<udim> strides(std::vector<udim> const &shape) {
     std::vector<udim> strides(shape.size());
     // TODO: 完成函数体，根据张量形状计算张量连续存储时的步长。
     // READ: 逆向迭代器 std::vector::rbegin <https://zh.cppreference.com/w/cpp/container/vector/rbegin>
-    //       使用逆向迭代器可能可以简化代码
+    if (shape.empty()) return strides;// 如果形状为空，则返回空步长。
+
+    udim total_size = 1;// 用于计算总大小
+    for (int i = shape.size() - 1; i >= 0; --i) {
+        strides[i] = total_size;// 第 i 维的步长
+        total_size *= shape[i]; // 更新总大小为当前维度的大小
+    }
     return strides;
 }
 
