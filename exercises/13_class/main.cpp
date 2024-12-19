@@ -13,15 +13,31 @@ class Fibonacci {
     int cached;
 
 public:
-    // TODO: 实现构造器
-    // Fibonacci()
+    Fibonacci() : cache{0, 1}, cached(2) {// 初始化前两个元素并设置 cached
+        // 如果需要，可以在这里引入更多的初始化逻辑
+    }
 
-    // TODO: 实现正确的缓存优化斐波那契计算
+    // 实现正确的缓存优化斐波那契计算
     size_t get(int i) {
-        for (; false; ++cached) {
-            cache[cached] = cache[cached - 1] + cache[cached - 2];
+        // 检查索引是否越界
+        if (i < 0 || i >= 16) {
+            throw std::out_of_range("Index out of range");// 控制范围
         }
-        return cache[i];
+
+        // 判断缓存是否已经计算过
+        if (i < cached) {
+            return cache[i];// 返回缓存的值
+        }
+
+        // 计算并填充
+        for (int j = cached; j <= i; ++j) {
+            cache[j] = cache[j - 1] + cache[j - 2];// 填充缓存
+        }
+
+        // 更新已缓存的最大索引
+        cached = i + 1;// 因为我们需要包括 i
+
+        return cache[i];// 返回计算出的值
     }
 };
 
