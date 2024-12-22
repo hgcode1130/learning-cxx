@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
     std::cout << x << " + " << y << " = " << add(x, y) << std::endl;
     return 0;
 }
-
+//
 int add(int a, int b) {
     // TODO: 补全函数定义，但不要移动代码行
     return a + b;
